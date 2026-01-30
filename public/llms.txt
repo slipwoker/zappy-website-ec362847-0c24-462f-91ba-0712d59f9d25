@@ -1,4 +1,6 @@
-# Business — Generative Engine Optimization Map
+# קייל אלומיניום — Generative Engine Optimization Map
+
+> A בנייה ועיצוב חוץ business.
 
 ---
 
@@ -34,7 +36,19 @@ Information about WCAG compliance and accessibility features.
 
 # Business Context (for LLM understanding)
 
-## About Business
+## About קייל אלומיניום
+קייל אלומיניום is a business in the בנייה ועיצוב חוץ industry.
+
+## Target Audience
+- בעלי בתים לשיפוץ
+- יזמי נדל"ן
+- אדריכלים ומעצבים
+- בעלי נכסים יוקרתיים
+- חובבי טיפוח גינות
+
+## Industry
+בנייה ועיצוב חוץ
+
 ---
 
 # Additional Resources
