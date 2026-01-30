@@ -1,57 +1,43 @@
-# קייל אלומיניום — Generative Engine Optimization Map
-
-> A בנייה ועיצוב חוץ business.
+# Business — Generative Engine Optimization Map
 
 ---
 
 ## Pages
 
 ### Home
-https://-ec362847.zappy5.app
+https://example.com
 
 ### Catalog
-https://-ec362847.zappy5.app/catalog
+https://example.com/catalog
 
 ### Project
-https://-ec362847.zappy5.app/project
+https://example.com/project
 
 ### Contact
-https://-ec362847.zappy5.app/contact
+https://example.com/contact
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://-ec362847.zappy5.app/privacy
+https://example.com/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://-ec362847.zappy5.app/terms
+https://example.com/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://-ec362847.zappy5.app/accessibility
+https://example.com/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About קייל אלומיניום
-קייל אלומיניום is a business in the בנייה ועיצוב חוץ industry.
-
-## Target Audience
-- בעלי בתים לשיפוץ
-- יזמי נדל"ן
-- אדריכלים ומעצבים
-- בעלי נכסים יוקרתיים
-- חובבי טיפוח גינות
-
-## Industry
-בנייה ועיצוב חוץ
-
+## About Business
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://-ec362847.zappy5.app/sitemap.xml
-- **Robots.txt**: https://-ec362847.zappy5.app/robots.txt
+- **Sitemap**: https://example.com/sitemap.xml
+- **Robots.txt**: https://example.com/robots.txt
