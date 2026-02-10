@@ -1,57 +1,43 @@
-# קייל אלומיניום — Generative Engine Optimization Map
-
-> A בנייה ועיצוב חוץ business.
+# Business — Generative Engine Optimization Map
 
 ---
 
 ## Pages
 
 ### Home
-https://kyal-aluminum.zappy5.app
+https://kylealuminum.co.il
 
 ### Catalog
-https://kyal-aluminum.zappy5.app/catalog
+https://kylealuminum.co.il/catalog
 
 ### Project
-https://kyal-aluminum.zappy5.app/project
+https://kylealuminum.co.il/project
 
 ### Contact
-https://kyal-aluminum.zappy5.app/contact
+https://kylealuminum.co.il/contact
 
 ## Legal & Policy
 
 ### Privacy Policy
-https://kyal-aluminum.zappy5.app/privacy
+https://kylealuminum.co.il/privacy
 Information about how user data is collected, stored, and protected.
 
 ### Terms & Conditions
-https://kyal-aluminum.zappy5.app/terms
+https://kylealuminum.co.il/terms
 Legal terms describing service usage, rights, and policies.
 
 ### Accessibility Statement
-https://kyal-aluminum.zappy5.app/accessibility
+https://kylealuminum.co.il/accessibility
 Information about WCAG compliance and accessibility features.
 
 ---
 
 # Business Context (for LLM understanding)
 
-## About קייל אלומיניום
-קייל אלומיניום is a business in the בנייה ועיצוב חוץ industry.
-
-## Target Audience
-- בעלי בתים לשיפוץ
-- יזמי נדל"ן
-- אדריכלים ומעצבים
-- בעלי נכסים יוקרתיים
-- חובבי טיפוח גינות
-
-## Industry
-בנייה ועיצוב חוץ
-
+## About Business
 ---
 
 # Additional Resources
 
-- **Sitemap**: https://kyal-aluminum.zappy5.app/sitemap.xml
-- **Robots.txt**: https://kyal-aluminum.zappy5.app/robots.txt
+- **Sitemap**: https://kylealuminum.co.il/sitemap.xml
+- **Robots.txt**: https://kylealuminum.co.il/robots.txt
