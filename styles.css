@@ -5799,6 +5799,33 @@ small, .small-text {
 /* ========== END HERO IMAGE GRADIENT FIX ========== */
 
 
+/* ========== PRODUCT ICON STYLES (product-icon-styles) ========== */
+.product-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; width: 100%; }
+.product-title-row h1 { flex: 1; min-width: 0; }
+.product-icon-actions { display: flex; gap: 8px; flex-shrink: 0; padding-top: 6px; }
+.icon-btn { width: 36px; height: 36px; border: none; background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: color 0.2s; color: currentColor; padding: 0; }
+.icon-btn:hover { color: var(--primary-color, #ff0083); }
+.icon-btn.active { color: #e74c3c; }
+.icon-btn.active .heart-outline { display: none !important; }
+.icon-btn.active .heart-filled { display: block !important; }
+.profile-section, .addresses-section, .favorites-section, .orders-section { border: 1px solid var(--border-color, rgba(128,128,128,0.2)); border-radius: 12px; padding: 24px; margin-bottom: 24px; background: transparent; }
+.favorites-section h2 { font-size: 1.25rem; color: var(--text-color, #1f2937); margin-bottom: 20px; }
+.favorites-loading { text-align: center; padding: 20px; color: var(--text-secondary, #6b7280); }
+.favorites-empty { text-align: center; padding: 32px; color: var(--text-secondary, #6b7280); }
+.favorites-empty p { margin-bottom: 16px; }
+.favorites-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+.favorite-card { background: transparent; border: 1px solid var(--border-color, rgba(128,128,128,0.2)); border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; position: relative; }
+.favorite-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.favorite-card-img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.favorite-card-body { padding: 12px; }
+.favorite-card-body h4 { font-size: 0.875rem; font-weight: 500; color: var(--text-color, #1f2937); margin: 0 0 6px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.favorite-price { font-weight: 600; color: var(--primary-color, #ff0083); font-size: 0.9rem; }
+.favorite-remove-btn { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%; border: none; background: rgba(255,255,255,0.9); color: #dc2626; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: all 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+.favorite-remove-btn:hover { background: #dc2626; color: white; }
+@media (max-width: 480px) { .favorites-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+/* ========== END PRODUCT ICON STYLES ========== */
+
+
 /* ========== GRID RESPONSIVE FIX (zappy-grid-mobile-fix) ========== */
 /* Ensures grids with explicit columns use CSS variable and are responsive on mobile */
 
@@ -5808,11 +5835,25 @@ small, .small-text {
   display: grid !important;
   grid-template-columns: var(--zappy-grid-cols, repeat(2, minmax(0, 1fr))) !important;
 }
+/* Carousel mode overrides grid display to allow flex-based track layout */
+.zappy-carousel-mode,
+[data-zappy-display-mode="carousel"] {
+  display: block !important;
+}
 
-/* ZOOM WRAPPER: Ensure overflow:hidden for crop zoom effect */
+/* ZOOM WRAPPER: Ensure overflow:hidden and position:relative for crop zoom effect */
 /* The wrapper clips the oversized image to create the zoom/crop effect */
+/* position:relative is needed so absolutely positioned images stay within the wrapper */
 [data-zappy-zoom-wrapper="true"] {
   overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Prevent inserted elements from exceeding their container width.
+   max-width uses no !important so inline styles can set a specific constraint. */
+.zappy-inserted-element {
+  max-width: 100%;
+  box-sizing: border-box !important;
 }
 
 @media (max-width: 768px) {
@@ -5821,6 +5862,26 @@ small, .small-text {
   [data-zappy-auto-grid="true"] {
     grid-template-columns: 1fr !important;
     gap: 1.5rem !important;
+  }
+  
+  /* Grid children: override min-width:auto so children with fixed-width
+     content (e.g. zoom wrappers with width:448px!important) can shrink
+     to fit the 1fr column instead of overflowing the grid container. */
+  .zappy-preserve-css-grid[data-zappy-auto-grid="true"] > *,
+  [data-zappy-auto-grid="true"] > *,
+  [data-zappy-explicit-columns="true"] > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  /* Featured grids - force single column on mobile */
+  .featured-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Neutralize centering transforms on mobile */
+  [data-zappy-center-transform] {
+    transform: none !important;
   }
   
   /* Media-only grid items - constrain height on mobile */
@@ -5904,6 +5965,67 @@ small, .small-text {
     bottom: auto !important;
   }
   
+  /* Carousel: ensure block display on mobile */
+  .zappy-carousel-mode,
+  [data-zappy-display-mode="carousel"] {
+    display: block !important;
+  }
+  /* JS-initialized carousel: constrain wrapper on mobile */
+  .zappy-carousel-js-init .zappy-carousel-container-wrapper {
+    max-width: calc(100% - 20px) !important;
+  }
+  .zappy-carousel-js-init .zappy-carousel-item {
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  /* CSS-only fallback: if JS didn't initialize, stack items vertically */
+  .zappy-carousel-mode:not(.zappy-carousel-js-init) .zappy-carousel-container-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  .zappy-carousel-mode:not(.zappy-carousel-js-init) .zappy-carousel-track {
+    flex-direction: column !important;
+    transform: none !important;
+    gap: 1.5rem !important;
+  }
+  .zappy-carousel-mode:not(.zappy-carousel-js-init) .zappy-carousel-item {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+  }
+  .zappy-carousel-mode:not(.zappy-carousel-js-init) > :not(style):not(script):not(.zappy-carousel-btn):not(.zappy-carousel-dots):not(.zappy-carousel-container-wrapper) {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+  .zappy-carousel-mode:not(.zappy-carousel-js-init) .zappy-carousel-btn,
+  .zappy-carousel-mode:not(.zappy-carousel-js-init) .zappy-carousel-dots {
+    display: none !important;
+  }
+  /* Carousel items: fix zoom wrapper padding creating excess spacing */
+  .zappy-carousel-item [data-zappy-zoom-wrapper="true"],
+  .zappy-carousel-mode > div [data-zappy-zoom-wrapper="true"] {
+    padding-bottom: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  /* Carousel buttons: position inside the card area on mobile */
+  .zappy-carousel-js-init > .zappy-carousel-btn {
+    left: 4px !important;
+    right: auto !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+    background: rgba(255,255,255,0.9) !important;
+  }
+  .zappy-carousel-js-init > .zappy-carousel-btn.zappy-carousel-right {
+    left: auto !important;
+    right: 4px !important;
+  }
+  
   /* ========== MAIN PADDING FIX ========== */
   /* Fix double-padding from old V2 mobile CSS that applied padding to both main and sections */
   /* Exclude ecommerce-page which needs its own horizontal padding for proper mobile layout */
@@ -5926,14 +6048,25 @@ small, .small-text {
     padding-top: 100px !important;
   }
   
+  /* ========== HERO CONTAINER FULL-WIDTH (FULLSCREEN HEROES ONLY) ========== */
+  /* Only strip container padding/width for heroes with actual background images.
+     Text-only and side-by-side hero sections on inner pages need normal padding. */
   .hero-container,
-  section[class*="hero"] > .container {
+  /* V2 generation-time fullscreen heroes */
+  section[data-hero-type="fullscreen-scrim"] > .container,
+  section[data-hero-type="fullscreen-card"] > .container,
+  /* Editor-applied background images on hero sections */
+  section[class*="hero"][data-zappy-bg-type="image"] > .container,
+  section[class*="hero"][data-zappy-bg-type="video"] > .container,
+  /* V1 fallback: hero sections with known bg structures */
+  section[class*="hero"]:has(.hero-bg-container) > .container,
+  section[class*="hero"]:has([data-hero-bg]) > .container {
     width: 100% !important;
     max-width: 100% !important;
   }
   
   /* ========== HERO WIDTH FIX ========== */
-  /* Remove nested horizontal padding - only section should have horizontal padding */
+  /* Remove nested horizontal padding for fullscreen-type heroes only */
   .home-Hero-section .hero-container,
   .home-Hero-section .hero-content,
   .home-Hero-section .hero-metrics,
@@ -5941,9 +6074,27 @@ small, .small-text {
   .home-Hero-section .hero-image-frame,
   .home-Hero-section .container,
   .home-Hero-section .wrapper,
-  section[class*="hero"] .hero-container,
-  section[class*="hero"] .hero-content,
-  section[class*="hero"] .container {
+  /* V2 fullscreen heroes */
+  section[data-hero-type="fullscreen-scrim"] .hero-container,
+  section[data-hero-type="fullscreen-scrim"] .hero-content,
+  section[data-hero-type="fullscreen-scrim"] .container,
+  section[data-hero-type="fullscreen-card"] .hero-container,
+  section[data-hero-type="fullscreen-card"] .hero-content,
+  section[data-hero-type="fullscreen-card"] .container,
+  /* Editor-applied background images on hero sections */
+  section[class*="hero"][data-zappy-bg-type="image"] .hero-container,
+  section[class*="hero"][data-zappy-bg-type="image"] .hero-content,
+  section[class*="hero"][data-zappy-bg-type="image"] .container,
+  section[class*="hero"][data-zappy-bg-type="video"] .hero-container,
+  section[class*="hero"][data-zappy-bg-type="video"] .hero-content,
+  section[class*="hero"][data-zappy-bg-type="video"] .container,
+  /* V1 fallback: hero sections with known bg structures */
+  section[class*="hero"]:has(.hero-bg-container) .hero-container,
+  section[class*="hero"]:has(.hero-bg-container) .hero-content,
+  section[class*="hero"]:has(.hero-bg-container) .container,
+  section[class*="hero"]:has([data-hero-bg]) .hero-container,
+  section[class*="hero"]:has([data-hero-bg]) .hero-content,
+  section[class*="hero"]:has([data-hero-bg]) .container {
     padding-left: 0 !important;
     padding-right: 0 !important;
     padding-inline-start: 0 !important;
